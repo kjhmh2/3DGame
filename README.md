@@ -1,2 +1,2 @@
 # 3DGame
-具体的说明详见博客目录！
+Homework for 3DGame
