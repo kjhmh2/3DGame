@@ -107,7 +107,7 @@ public class CCSequenceAction : SSAction, SSActionCallback
     {
         foreach (SSAction action in sequence)
         {
-            DestroyObject(action);
+            Object.Destroy(action);
         }
     }
 }
@@ -139,7 +139,7 @@ public class SSActionManager : MonoBehaviour
         {
             SSAction ac = actions[key];
             actions.Remove(key);
-            DestroyObject(ac);
+            Object.Destroy(ac);
         }
         watingToDelete.Clear();
     }

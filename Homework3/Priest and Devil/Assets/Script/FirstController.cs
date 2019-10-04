@@ -32,7 +32,8 @@ public class FirstController : MonoBehaviour, ISceneController, UserAction
         fromCoast = new CoastController("from");
         toCoast = new CoastController("to");
         boat = new BoatController();
-        GameObject water = Instantiate(Resources.Load("Perfabs/Water", typeof(GameObject)), new Vector3(0, 0.5F, 0), Quaternion.identity, null) as GameObject;
+        GameObject water = Instantiate(Resources.Load("Perfabs/Water", typeof(GameObject)), new Vector3(0, 1F, 0), Quaternion.identity, null) as GameObject;
+        //water.transform.Rotate(90, 0, 0);
         water.name = "water";
         for (int i = 0; i < 3; i ++)
         {

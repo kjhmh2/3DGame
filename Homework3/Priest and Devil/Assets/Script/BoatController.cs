@@ -5,24 +5,27 @@ using UnityEngine;
 public class BoatController
 {
     readonly GameObject boat;
-    readonly Vector3 fromPosition = new Vector3(5, 1, 0);
-    readonly Vector3 toPosition = new Vector3(-5, 1, 0);
+    readonly Vector3 fromPosition = new Vector3(4.7F, 1, 0);
+    readonly Vector3 toPosition = new Vector3(-4.7F, 1, 0);
     readonly Vector3[] startPos;
     readonly Vector3[] destPos;
 
-    int State;
     GameObjects[] passenger = new GameObjects[2];
+    int State;
     int Speed = 10;
     int MovingState = -1;
+    bool needChangeDirection = false;
 
     public BoatController()
     {
         State = 1;
         MovingState = -1;
+        needChangeDirection = false;
         startPos = new Vector3[] { new Vector3(4.5F, 1.5F, 0), new Vector3(5.5F, 1.5F, 0) };
         destPos = new Vector3[] { new Vector3(-5.5F, 1.5F, 0), new Vector3(-4.5F, 1.5F, 0) };
 
         boat = Object.Instantiate(Resources.Load("Perfabs/Boat", typeof(GameObject)), fromPosition, Quaternion.identity, null) as GameObject;
+        boat.transform.Rotate(-90, 180, 90);
         boat.name = "boat";
 
         boat.AddComponent(typeof(ClickGUI));
@@ -93,6 +96,7 @@ public class BoatController
     public void ChangeState()
     {
         State = -State;
+        needChangeDirection = true;
     }
 
     public int get_State()
@@ -129,14 +133,6 @@ public class BoatController
         return Speed;
     }
 
-    public void reset()
-    {
-        State = 1;
-        boat.transform.position = fromPosition;
-        passenger = new GameObjects[2];
-        MovingState = -1;
-    }
-
     public int GetMovingState()
     {
         return MovingState;
@@ -145,5 +141,24 @@ public class BoatController
     public void ChangeMovingstate()
     {
         MovingState = -MovingState;
+    }
+
+    //change boat's direction
+    public void changeDirection()
+    {
+        if (needChangeDirection)
+        {
+            boat.transform.Rotate(0, 0, 180);
+            needChangeDirection = false;
+        }
+    }
+
+    public void reset()
+    {
+        State = 1;
+        boat.transform.position = fromPosition;
+        passenger = new GameObjects[2];
+        MovingState = -1;
+        needChangeDirection = false;
     }
 }

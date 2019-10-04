@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Priest and Devil", "Priest and Devil.csproj", "{5F160AE2-A7F0-367F-E60B-DB470618C938}"
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{538264F9-C2A5-30FF-9043-DB28EA7218BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{B18E3E95-A628-6F35-FDD2-A66E9B975675}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +11,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5F160AE2-A7F0-367F-E60B-DB470618C938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5F160AE2-A7F0-367F-E60B-DB470618C938}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5F160AE2-A7F0-367F-E60B-DB470618C938}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5F160AE2-A7F0-367F-E60B-DB470618C938}.Release|Any CPU.Build.0 = Release|Any CPU
+		{538264F9-C2A5-30FF-9043-DB28EA7218BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{538264F9-C2A5-30FF-9043-DB28EA7218BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{538264F9-C2A5-30FF-9043-DB28EA7218BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{538264F9-C2A5-30FF-9043-DB28EA7218BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B18E3E95-A628-6F35-FDD2-A66E9B975675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B18E3E95-A628-6F35-FDD2-A66E9B975675}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B18E3E95-A628-6F35-FDD2-A66E9B975675}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B18E3E95-A628-6F35-FDD2-A66E9B975675}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

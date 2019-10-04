@@ -10,10 +10,12 @@ public class FirstSceneActionManager : SSActionManager, SSActionCallback
 
     public void BoatMove(BoatController Boat)
     {
+        Boat.changeDirection();
         Complete = SSActionEventType.Started;
         CCMoveToAction action = CCMoveToAction.getAction(Boat.GetDestination(), Boat.GetMoveSpeed());
         addAction(Boat.GetGameObject(), action, this);
         Boat.ChangeState();
+        Boat.ChangeMovingstate();
     }
 
     public void GameObjectsMove(GameObjects GameObject, Vector3 Destination)
