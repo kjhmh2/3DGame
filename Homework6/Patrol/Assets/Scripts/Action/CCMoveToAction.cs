@@ -9,6 +9,7 @@ public class CCMoveToAction : SSAction
     public int block;
 
     private CCMoveToAction() { }
+
     public static CCMoveToAction getAction(int block, float speed, Vector3 position)
     {
         CCMoveToAction action = ScriptableObject.CreateInstance<CCMoveToAction>();

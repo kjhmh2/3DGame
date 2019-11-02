@@ -6,11 +6,12 @@ using UnityEngine.UI;
 
 public class InterfaceGUI : MonoBehaviour
 {
+    float S;
+    bool ss = false;
+    public GameObject t;
     UserAction UserActionController;
     ISceneController SceneController;
-    public GameObject t;
-    bool ss = false;
-    float S;
+
     // Use this for initialization
     void Start()
     {
@@ -21,7 +22,8 @@ public class InterfaceGUI : MonoBehaviour
 
     private void OnGUI()
     {
-        if (!ss) S = Time.time;
+        if (!ss)
+            S = Time.time;
         GUI.Label(new Rect(Screen.width - 160, 30, 150, 30), "Score: " + UserActionController.GetScore().ToString() + "  Time:  " + ((int)(Time.time - S)).ToString());
         if (ss)
         {
@@ -44,10 +46,8 @@ public class InterfaceGUI : MonoBehaviour
 
     private void Update()
     {
-        //获取方向键的偏移量
         float translationX = Input.GetAxis("Horizontal");
         float translationZ = Input.GetAxis("Vertical");
-        //移动玩家
         UserActionController.MovePlayer(translationX, translationZ);
     }
 }

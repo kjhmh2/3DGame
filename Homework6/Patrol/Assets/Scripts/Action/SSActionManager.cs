@@ -35,7 +35,6 @@ public class SSActionManager : MonoBehaviour
             SSAction ac = actions[key];
             actions.Remove(key);
             Object.Destroy(ac);
-            //DestroyObject(ac);
         }
         watingToDelete.Clear();
     }

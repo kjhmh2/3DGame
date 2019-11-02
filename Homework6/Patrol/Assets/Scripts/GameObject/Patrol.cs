@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Patrol : MonoBehaviour
 {
-    public int block;                      //标志巡逻兵的区域
-    public bool follow_player = false;    //玩家进入区域时是否跟随玩家的标志  
+    public int block;
+    public bool follow_player = false;
 
     private void Start()
     {
@@ -17,7 +17,6 @@ public class Patrol : MonoBehaviour
 
     void Update()
     {
-        //防止碰撞发生后的旋转
         if (this.gameObject.transform.localEulerAngles.x != 0 || gameObject.transform.localEulerAngles.z != 0)
         {
             gameObject.transform.localEulerAngles = new Vector3(0, gameObject.transform.localEulerAngles.y, 0);

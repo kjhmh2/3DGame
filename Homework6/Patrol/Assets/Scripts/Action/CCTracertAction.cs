@@ -12,6 +12,7 @@ public class CCTracertAction : SSAction
     public float speed;
 
     private CCTracertAction() { }
+
     public static CCTracertAction getAction(GameObject target, float speed)
     {
         CCTracertAction action = ScriptableObject.CreateInstance<CCTracertAction>();
@@ -37,4 +38,3 @@ public class CCTracertAction : SSAction
 
     }
 }
-

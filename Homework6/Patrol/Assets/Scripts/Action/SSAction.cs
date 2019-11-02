@@ -5,7 +5,6 @@ using Interfaces;
 
 public class SSAction : ScriptableObject
 {
-
     public bool enable = true;
     public bool destroy = false;
 

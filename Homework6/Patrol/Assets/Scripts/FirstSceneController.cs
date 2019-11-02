@@ -18,7 +18,8 @@ public class FirstSceneController : MonoBehaviour, ISceneController, UserAction
         SSDirector director = SSDirector.getInstance();
         director.currentScenceController = this;
         PF = PatrolFactory.PF;
-        if (CCManager == null) CCManager = gameObject.AddComponent<CCActionManager>();
+        if (CCManager == null)
+            CCManager = gameObject.AddComponent<CCActionManager>();
         if (player == null && allProp == null)
         {
             Instantiate(Resources.Load<GameObject>("Prefabs/Plane"), new Vector3(0, 0, 0), Quaternion.identity);
@@ -26,18 +27,15 @@ public class FirstSceneController : MonoBehaviour, ISceneController, UserAction
             var camera = GameObject.Find("Camera");
             camera.transform.parent = player.transform;
             camera.transform.position = player.transform.position + new Vector3(0, 5, -5);
-            allProp = PF.GetProp();
+            allProp = PF.GetPatrol();
         }
         if (player.GetComponent<Rigidbody>())
-        {
             player.GetComponent<Rigidbody>().freezeRotation = true;
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //防止碰撞带来的移动
         if (player.transform.localEulerAngles.x != 0 || player.transform.localEulerAngles.z != 0)
         {
             player.transform.localEulerAngles = new Vector3(0, player.transform.localEulerAngles.y, 0);
@@ -92,6 +90,7 @@ public class FirstSceneController : MonoBehaviour, ISceneController, UserAction
     {
         return gameState;
     }
+
     public void SetPlayerArea(int x)
     {
         if (PlayerArea != x && gameState)
@@ -106,7 +105,7 @@ public class FirstSceneController : MonoBehaviour, ISceneController, UserAction
     {
         if (gameState)
         {
-            ++score;
+            score ++;
             allProp[PlayerArea].GetComponent<Patrol>().follow_player = true;
             CCManager.Tracert(allProp[PlayerArea], player);
             allProp[PlayerArea].GetComponent<Animator>().SetBool("run", true);
@@ -121,7 +120,6 @@ public class FirstSceneController : MonoBehaviour, ISceneController, UserAction
         gameState = false;
     }
 
-    //玩家移动
     public void MovePlayer(float translationX, float translationZ)
     {
         if (gameState && player != null)
@@ -134,7 +132,6 @@ public class FirstSceneController : MonoBehaviour, ISceneController, UserAction
             {
                 player.GetComponent<Animator>().SetBool("run", false);
             }
-            //移动和旋转
             player.transform.Translate(0, 0, translationZ * 4f * Time.deltaTime);
             player.transform.Rotate(0, translationX * 50f * Time.deltaTime, 0);
         }

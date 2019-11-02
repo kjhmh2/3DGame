@@ -14,7 +14,6 @@ namespace Interfaces
         int GetScore();
         void Restart();
         bool GetGameState();
-        //移动玩家
         void MovePlayer(float translationX, float translationZ);
     }
 

@@ -10,7 +10,8 @@ public class CCActionManager : SSActionManager, SSActionCallback
 
     public void Tracert(GameObject p, GameObject player)
     {
-        if (actionList.ContainsKey(p.GetComponent<Patrol>().block)) actionList[p.GetComponent<Patrol>().block].destroy = true;
+        if (actionList.ContainsKey(p.GetComponent<Patrol>().block))
+            actionList[p.GetComponent<Patrol>().block].destroy = true;
         CCTracertAction action = CCTracertAction.getAction(player, 0.8f);
         addAction(p.gameObject, action, this);
     }
@@ -51,7 +52,8 @@ public class CCActionManager : SSActionManager, SSActionCallback
 
     public void SSActionCallback(SSAction source)
     {
-        if (actionList.ContainsKey(source.gameObject.GetComponent<Patrol>().block)) actionList.Remove(source.gameObject.GetComponent<Patrol>().block);
+        if (actionList.ContainsKey(source.gameObject.GetComponent<Patrol>().block))
+            actionList.Remove(source.gameObject.GetComponent<Patrol>().block);
         GoAround(source.gameObject);
     }
 }
