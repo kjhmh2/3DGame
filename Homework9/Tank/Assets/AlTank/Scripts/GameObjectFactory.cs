@@ -2,21 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum tankType : int { Player, Enemy }
+// type
+public enum tankType : int {Player, Enemy}
 
-public class GameObjectFactory : MonoBehaviour {
-    // 玩家
+public class GameObjectFactory : MonoBehaviour
+{
     public GameObject player;
-    // npc
+    // enemy
     public GameObject tank;
-    // 子弹
     public GameObject bullet;
-    // 爆炸粒子系统
     public ParticleSystem ps;
 
     private Dictionary<int, GameObject> usingTanks;
     private Dictionary<int, GameObject> freeTanks;
-
     private Dictionary<int, GameObject> usingBullets;
     private Dictionary<int, GameObject> freeBullets;
 
@@ -32,8 +30,8 @@ public class GameObjectFactory : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
-        //回收坦克的委托事件
+    void Start ()
+    {
         AITank.recycleEvent += recycleTank;
     }
 
@@ -85,9 +83,10 @@ public class GameObjectFactory : MonoBehaviour {
 
     public ParticleSystem getPs()
     {
-        for(int i = 0; i < psContainer.Count; i++)
+        for (int i = 0; i < psContainer.Count; i++)
         {
-            if (!psContainer[i].isPlaying) return psContainer[i];
+            if (!psContainer[i].isPlaying)
+                return psContainer[i];
         }
         ParticleSystem newPs = Instantiate<ParticleSystem>(ps);
         psContainer.Add(newPs);

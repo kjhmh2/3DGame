@@ -9,4 +9,5 @@ public interface IUserAction
     void turn(float offsetX);
     void shoot();
     bool isGameOver();
+    bool isMovingForward();
 }

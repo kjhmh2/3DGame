@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainCameraControl : MonoBehaviour {
-
-    public float m_DampTime = 0.2f;                 // 相机refocus的时间
-    public float m_ScreenEdgeBuffer = 4f;           // 最靠近边界的坦克与边界之间的缓冲大小
-    public float m_MinSize = 6.5f;                  // 相机Size最小值
-    [HideInInspector] public List<Transform> m_Targets; // 保存所有坦克的transform
+public class MainCameraControl : MonoBehaviour
+{
+    public float m_DampTime = 0.2f;               
+    public float m_ScreenEdgeBuffer = 4f;           
+    public float m_MinSize = 6.5f;                  
+    [HideInInspector] public List<Transform> m_Targets;
 
 
     private Camera m_Camera;                        
@@ -29,9 +29,7 @@ public class MainCameraControl : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        // 把相机移动到希望的位置
         Move();
-        // 改变相机size
         Zoom();
     }
 
@@ -42,22 +40,21 @@ public class MainCameraControl : MonoBehaviour {
         transform.position = Vector3.SmoothDamp(transform.position, m_DesiredPosition, ref m_MoveVelocity, m_DampTime);
     }
 
-    // 计算平均位置
     private void FindAveragePosition()
     {
         Vector3 averagePos = new Vector3();
-        int numTargets = 0;
+        int cnt = 0;
 
-        for (int i = 0; i < m_Targets.Count; i++)
+        for (int i = 0; i < m_Targets.Count; ++ i)
         {
             if (!m_Targets[i].gameObject.activeSelf)
                 continue;
             averagePos += m_Targets[i].position;
-            numTargets++;
+            cnt++;
         }
 
-        if (numTargets > 0)
-            averagePos /= numTargets;
+        if (cnt > 0)
+            averagePos /= cnt;
 
         averagePos.y = transform.position.y;
         m_DesiredPosition = averagePos;
@@ -70,13 +67,12 @@ public class MainCameraControl : MonoBehaviour {
         m_Camera.orthographicSize = Mathf.SmoothDamp(m_Camera.orthographicSize, requiredSize, ref m_ZoomSpeed, m_DampTime);
     }
 
-    // 计算合适的Size
     private float FindRequiredSize()
     {
         Vector3 desiredLocalPos = transform.InverseTransformPoint(m_DesiredPosition);
         float size = 0f;
 
-        for (int i = 0; i < m_Targets.Count; i++)
+        for (int i = 0; i < m_Targets.Count; ++ i)
         {
             if (!m_Targets[i].gameObject.activeSelf)
                 continue;
@@ -94,7 +90,7 @@ public class MainCameraControl : MonoBehaviour {
         return size;
     }
 
-    // 初始化相机
+    // init
     public void SetStartPositionAndSize()
     {
         FindAveragePosition();

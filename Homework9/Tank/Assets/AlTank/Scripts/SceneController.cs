@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneController : MonoBehaviour, IUserAction {
-
+public class SceneController : MonoBehaviour, IUserAction
+{
     public GameObject player;
     private bool gameOver = false;
+    private bool MovingForward = true;
     private int enemyCount = 6;
     private GameObjectFactory mf;
     private MainCameraControl cameraControl;
-
 
     private void Awake()
     {
@@ -22,21 +22,22 @@ public class SceneController : MonoBehaviour, IUserAction {
     }
 
     // Use this for initialization
-    void Start () {
-	    for(int i = 0; i < enemyCount; i++)
+    void Start ()
+    {
+	    for (int i = 0; i < enemyCount; ++ i)
         {
             GameObject gb = mf.getTank();
             cameraControl.setTarget(gb.transform);
         }
         Player.destroyEvent += setGameOver;
-
-        // 初始化相机位置
         cameraControl.SetStartPositionAndSize();
 	}
 	
-	// 更新相机位置
-	void Update () {
-        Camera.main.transform.position = new Vector3(player.transform.position.x, 15, player.transform.position.z);
+	void Update()
+    {
+        // camera position
+        Camera.main.transform.position = new Vector3(player.transform.position.x, 20, player.transform.position.z);
+        Camera.main.orthographicSize = 15;
 	}
 
     public Vector3 getPlayerPos()
@@ -48,6 +49,7 @@ public class SceneController : MonoBehaviour, IUserAction {
     {
         return gameOver;
     }
+
     public void setGameOver()
     {
         gameOver = true;
@@ -55,29 +57,37 @@ public class SceneController : MonoBehaviour, IUserAction {
 
     public void moveForward()
     {
+        MovingForward = true;
         player.GetComponent<Rigidbody>().velocity = player.transform.forward * 20;
     }
+
     public void moveBackWard()
     {
+        MovingForward = false;
         player.GetComponent<Rigidbody>().velocity = player.transform.forward * -20;
     }
 
     public void turn(float offsetX)
     {
-        float y = player.transform.localEulerAngles.y + offsetX * 5;
+        float y = player.transform.localEulerAngles.y + offsetX * 2;
         float x = player.transform.localEulerAngles.x;
         player.transform.localEulerAngles = new Vector3(x, y, 0);
+    }
+
+    public bool isMovingForward()
+    {
+        return MovingForward;
     }
 
     public void shoot()
     {
         GameObject bullet = mf.getBullet(tankType.Player);
-        // 设置子弹位置
+        // set position
         bullet.transform.position = new Vector3(player.transform.position.x, 1.5f, player.transform.position.z) + player.transform.forward * 1.5f;
-        // 设置子弹方向
+        // set direction
         bullet.transform.forward = player.transform.forward;
 
-        // 发射子弹
+        // shoot
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         rb.AddForce(bullet.transform.forward * 20, ForceMode.Impulse);
     }

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IUserGUI : MonoBehaviour {
+public class IUserGUI : MonoBehaviour
+{
     IUserAction action;
 	
     // Use this for initialization
@@ -11,7 +12,8 @@ public class IUserGUI : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         if (!action.isGameOver())
         {
             if (Input.GetKey(KeyCode.W))
@@ -27,7 +29,10 @@ public class IUserGUI : MonoBehaviour {
                 action.shoot();
             }
             float offsetX = Input.GetAxis("Horizontal1");
-            action.turn(offsetX);
+            if (action.isMovingForward())
+                action.turn(offsetX);
+            else
+                action.turn(-offsetX);
         }
 	}
 }

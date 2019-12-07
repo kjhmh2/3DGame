@@ -348,6 +348,12 @@
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>G:/大三上/3D游戏编程/仓库/3DGame/Homework9/Tank/Library/PackageCache/com.unity.ads@2.3.1/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>G:/大三上/3D游戏编程/仓库/3DGame/Homework9/Tank/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements.Editor">
+      <HintPath>G:/大三上/3D游戏编程/仓库/3DGame/Homework9/Tank/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>G:/大三上/3D游戏编程/仓库/3DGame/Homework9/Tank/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -359,12 +365,6 @@
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>G:/大三上/3D游戏编程/仓库/3DGame/Homework9/Tank/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Advertisements.Editor">
-      <HintPath>G:/大三上/3D游戏编程/仓库/3DGame/Homework9/Tank/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>G:/大三上/3D游戏编程/仓库/3DGame/Homework9/Tank/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>F:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
